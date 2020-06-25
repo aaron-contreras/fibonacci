@@ -1,21 +1,18 @@
-def fibs(number)
-  fib_sequence = []
+# frozen_string_literal: true
 
-  1.upto(number) do |fib_number|
-    if (1..2).include? fib_number
-      fib_sequence << fib_number - 1
-    else
-      fib_sequence << fib_sequence[-1] + fib_sequence[-2]
-    end
+def fibs(number)
+  fib_sequence = [0, 1]
+
+  3.upto(number) do
+    fib_sequence << fib_sequence[-1] + fib_sequence[-2]
   end
 
-  fib_sequence
+  fib_sequence[0...number]
 end
 
-def fibs_rec(number, sequence = [0, 1])
-  return sequence[0...number] if number <= 2
-  return sequence if sequence.length == number
+def fibs_rec(number)
+  return [0, 1][0...number] if number < 3
 
-  sequence << sequence[-1] + sequence[-2]
-  fibs_rec(number, sequence)
+  fib_sequence = fibs_rec number - 1
+  fib_sequence << fib_sequence[-1] + fib_sequence[-2]
 end
