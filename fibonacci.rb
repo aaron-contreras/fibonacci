@@ -16,3 +16,9 @@ def fibs_rec(number)
   fib_sequence = fibs_rec number - 1
   fib_sequence << fib_sequence[-1] + fib_sequence[-2]
 end
+
+# One liner
+
+def fibs_rec2(number)
+  number < 3 ? [0, 1][0...number] : fibs_rec2(number - 1) << fibs_rec2(number - 1)[-1] + fibs_rec2(number - 1)[-2]
+end
